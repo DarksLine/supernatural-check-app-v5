@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Тест экстрасенсов
+{% endblock %}
+
+{% block content %}
+
+    <h2 style="margin-bottom: 20px;">
+        Добро пожаловать в приложение <br> 
+        по тестированию экстрасенсов
+    </h2>
+    <p>
+        Здесь Вы можете протестировать наших экстрасенсов на <br> 
+        телепатическую способность. Чтобы начать, введите количество желаемых участников.
+    </p>
+
+    <form method="POST" action="/">
+    {% csrf_token %}
+
+    <input type="number" min="2" max="10" name="count" required style="width: 128px;height: 26px;margin-bottom: 15px;"
+        placeholder="Кол. людей" /><br>
+
+    <button type="submit">Начать испытание!</button>
+    </form>
+
+{% endblock %}
+    

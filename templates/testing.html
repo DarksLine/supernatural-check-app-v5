@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+Попытки
+{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 20px;">
+    Экстрасенсы предполагают, <br>
+    что Ваше число:
+</h2>
+
+{#################################################################}
+<table class="table table-bordered table-sm">
+
+    <thead class="table-light">
+    {% for psy in list_res %}
+        <th scope="col">{{ psy.name }}</th>
+    {% endfor %}
+    </thead>
+
+    <tbody>
+    {% for psy in list_res %}
+            <td>{{ psy.guess }}</td>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+
+
+</table>
+{#################################################################}
+
+<form method="POST" action="/testing">
+    {% csrf_token %}
+    <input type="number" min="10" max="99" name="answer" required style="width: 128px;height: 26px;margin-bottom: 15px;"
+        placeholder="Ваше число" /><br>
+
+    <button type="submit">Мой ответ</button>
+</form>
+{% endblock %}
